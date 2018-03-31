@@ -17,31 +17,47 @@ vocabulary = {"USERNAME": 1,
               "STATE": 4,
               "CITY": 5,
               "MOTTO": 6,
-              "STUDENT/PROFESSIONAL": 7,
+              "PROFESSION": 7,
               "INSTITUTION": 8,
               "TEAM LIST": 9,
               "CODECHEF CURRENT RATING": 10,
               "HACKERRANK CURRENT RATING": 11,
               "CODEFORCES CURRENT RATING": 12}
 
-loc = 1
+
 print("="*5, "-"*5, " You can search for ", "-"*5, "="*5)
-a = 1
-for i in vocabulary:
-    print(a, ".", i)
-    a += 1
+index = 1
+for element in vocabulary:
+    print(index, ".", element)
+    index += 1
 
 while True:
     print("="*10, "#"*15, "="*10)
-    n = input("Enter your choice = ").upper()
-    if len(n)>1:
+    search = input("Enter your choice = ").upper()
+    if len(search) > 2:
+
         for word in vocabulary:
-            if word in n:
-                n = vocabulary[word]
+            if word in search:
+                search = vocabulary[word]
+                key = word
                 break
 
-    if n == "EXIT":
+        else:
+            print("Wrong Input!!!")
+            print("Re-run the program !!!")
+            exit()
+    else:
+        for id in vocabulary:
+            if vocabulary[id] == int(search):
+                key = id
+
+    if search == "EXIT":
         break
     else:
-        n = int(n)
-        print(dic[n])
+        search = int(search)
+        if search > 12:
+            print("Wrong Input!!!")
+            print("Re-run the program !!!")
+            exit()
+        else:
+            print(key, "=", dic[search])
